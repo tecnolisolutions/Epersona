@@ -46,6 +46,11 @@ class Vista_lista_personas(QWidget):
         self.etiqueta_descripcion.setAlignment(Qt.AlignCenter)
         self.distribuidor_base.addWidget(self.etiqueta_descripcion, Qt.AlignCenter)
 
+        # Creación del espacio de los botones
+        self.widget_botones = QWidget()
+        self.distribuidor_botones = QGridLayout()
+        self.widget_botones.setLayout(self.distribuidor_botones)
+
         # Hacemos la ventana visible
         self.show()
 

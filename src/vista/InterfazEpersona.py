@@ -13,3 +13,4 @@ class App_EPersona(QApplication):
 
         self.logica = logica
         self.mostrar_vista_lista_personas()
+

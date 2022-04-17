@@ -73,3 +73,10 @@ class Vista_lista_personas(QWidget):
                 # Hacemos la ventana visible
         self.show()
 
+    def mostrar_personas(self, lista_personas):
+        """
+        Esta función puebla la tabla con las personas
+        """
+        self.carreras = lista_personas
+
+

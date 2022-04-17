@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QApplication
+from src.vista.Vista_lista_personas import Vista_lista_personas
 
 class App_EPersona(QApplication):
     """
@@ -13,3 +14,10 @@ class App_EPersona(QApplication):
 
         self.logica = logica
         self.mostrar_vista_lista_personas()
+
+    def mostrar_vista_lista_personas(self):
+        """
+        Esta función inicializa la ventana de la lista de personas
+        """
+        self.vista_lista_carreras = Vista_lista_personas(self)
+        self.vista_lista_carreras.mostrar_carreras(self.logica.dar_personas())

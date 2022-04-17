@@ -19,5 +19,5 @@ class App_EPersona(QApplication):
         """
         Esta función inicializa la ventana de la lista de personas
         """
-        self.vista_lista_carreras = Vista_lista_personas(self)
-        self.vista_lista_carreras.mostrar_carreras(self.logica.dar_personas())
+        self.vista_lista_personas = Vista_lista_personas(self)
+        self.vista_lista_personas.mostrar_personas(self.logica.dar_personas())

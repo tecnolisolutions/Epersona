@@ -58,7 +58,7 @@ class Vista_lista_personas(QWidget):
         self.btn_aniadir_actividad.setIcon(QIcon("src/recursos/006-add.png"))
         self.btn_aniadir_actividad.setIconSize(QSize(120, 120))
         self.distribuidor_botones.addWidget(self.btn_aniadir_actividad, 0, 0, Qt.AlignLeft)
-        self.btn_aniadir_actividad.clicked.connect(self.mostrar_ventana_crear_carrera)
+        self.btn_aniadir_actividad.clicked.connect(self.mostrar_ventana_crear_persona)
 
         # Creación del área con la información de las personas
         self.tabla_personas = QScrollArea(self)
@@ -67,7 +67,7 @@ class Vista_lista_personas(QWidget):
         self.widget_tabla_actividades = QWidget()
         self.distribuidor_tabla_personas = QGridLayout()
         self.widget_tabla_actividades.setLayout(self.distribuidor_tabla_personas);
-        self.tabla_carreras.setWidget(self.widget_tabla_actividades)
+        self.tabla_personas.setWidget(self.widget_tabla_actividades)
         self.distribuidor_base.addWidget(self.tabla_personas)
 
                 # Hacemos la ventana visible
@@ -147,6 +147,14 @@ class Vista_lista_personas(QWidget):
         """
         self.hide()
         self.interfaz.mostrar_carrera(id_persona)
+
+    def mostrar_ventana_crear_persona(self):
+        """
+        Esta función informa a la interfaz para deplegar la ventana de la información de una carrera
+        """
+        self.hide()
+        self.interfaz.mostrar_persona()
+
 
     def eliminar_persona(self, indice_persona):
         """

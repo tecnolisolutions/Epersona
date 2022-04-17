@@ -51,6 +51,15 @@ class Vista_lista_personas(QWidget):
         self.distribuidor_botones = QGridLayout()
         self.widget_botones.setLayout(self.distribuidor_botones)
 
+        # Creación de los botones
+        self.btn_aniadir_actividad = QPushButton("Agregar Persona", self)
+        self.btn_aniadir_actividad.setFixedSize(200, 40)
+        self.btn_aniadir_actividad.setToolTip("Agregar Persona")
+        self.btn_aniadir_actividad.setIcon(QIcon("src/recursos/006-add.png"))
+        self.btn_aniadir_actividad.setIconSize(QSize(120, 120))
+        self.distribuidor_botones.addWidget(self.btn_aniadir_actividad, 0, 0, Qt.AlignLeft)
+        self.btn_aniadir_actividad.clicked.connect(self.mostrar_ventana_crear_carrera)
+
         # Hacemos la ventana visible
         self.show()
 

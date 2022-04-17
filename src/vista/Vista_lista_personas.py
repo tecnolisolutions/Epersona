@@ -79,7 +79,7 @@ class Vista_lista_personas(QWidget):
         """
         self.personas = lista_personas
 
-        #Este pedazo de código borra todo lo que no sean encabezados 
+        #Este pedazo de código borra todo lo que no sean encabezados
         while self.distribuidor_tabla_personas.count()>2:
             child = self.distribuidor_tabla_personas.takeAt(2)
             if child.widget():
@@ -140,4 +140,11 @@ class Vista_lista_personas(QWidget):
 
         # Elemento para ajustar la forma de la tabla (y evitar que queden muy espaciados)
         self.distribuidor_tabla_personas.layout().setRowStretch(numero_fila + 2, 1)
+
+    def mostrar_persona(self,id_persona):
+        """
+        Esta función informa a la interfaz para desplegar la ventana de la carrera
+        """
+        self.hide()
+        self.interfaz.mostrar_carrera(id_persona)
 

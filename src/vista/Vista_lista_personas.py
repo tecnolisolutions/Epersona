@@ -148,3 +148,19 @@ class Vista_lista_personas(QWidget):
         self.hide()
         self.interfaz.mostrar_carrera(id_persona)
 
+    def eliminar_persona(self, indice_persona):
+        """
+        Esta función elimina una persona tras solicitar una confirmación
+        """
+        mensaje_confirmacion = QMessageBox()
+        mensaje_confirmacion.setIcon(QMessageBox.Question)
+        mensaje_confirmacion.setText(
+            "¿Esta seguro de que desea borrar esta persona?\nRecuerde que esta acción es irreversible")
+        mensaje_confirmacion.setWindowTitle("¿Desea borrar esta persona?")
+        mensaje_confirmacion.setWindowIcon(QIcon("src/recursos/smallLogo.png"))
+        mensaje_confirmacion.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+        respuesta = mensaje_confirmacion.exec_()
+        if respuesta == QMessageBox.Yes:
+            self.interfaz.eliminar_persona(indice_persona)
+
+

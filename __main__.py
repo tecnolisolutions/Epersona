@@ -11,4 +11,5 @@ if __name__ == '__main__':
     print(logica.personas)
 
     app = App_EPersona(sys.argv, logica)
+    sys.exit(app.exec_())
 

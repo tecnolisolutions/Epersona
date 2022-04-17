@@ -16,7 +16,7 @@ class Vista_lista_personas(QWidget):
         self.interfaz = interfaz
 
         # Se establecen las características de la ventana
-        self.title = 'E-persona'
+        self.title = 'Epersona'
         self.width = 720
         self.height = 750
         self.inicializar_GUI()
@@ -29,5 +29,16 @@ class Vista_lista_personas(QWidget):
 
         self.distribuidor_base = QVBoxLayout(self)
 
+        # Creación del logo de encabezado
+        self.logo = QLabel(self)
+        self.pixmap = QPixmap("src/recursos/EpersonaHeader.png")
+        self.pixmap = self.pixmap.scaled(400, 150, Qt.KeepAspectRatio)
+        self.logo.setPixmap(self.pixmap)
+        self.logo.setAlignment(Qt.AlignCenter)
+        self.distribuidor_base.addWidget(self.logo, alignment=Qt.AlignCenter)
+
+
+
         # Hacemos la ventana visible
         self.show()
+

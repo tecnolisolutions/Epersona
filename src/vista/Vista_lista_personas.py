@@ -77,6 +77,67 @@ class Vista_lista_personas(QWidget):
         """
         Esta función puebla la tabla con las personas
         """
-        self.carreras = lista_personas
+        self.personas = lista_personas
 
+        #Este pedazo de código borra todo lo que no sean encabezados 
+        while self.distribuidor_tabla_personas.count()>2:
+            child = self.distribuidor_tabla_personas.takeAt(2)
+            if child.widget():
+                child.widget().deleteLater()
+
+        self.distribuidor_tabla_personas.setColumnStretch(0,1)
+        self.distribuidor_tabla_personas.setColumnStretch(1,0)
+        self.distribuidor_tabla_personas.setColumnStretch(2,0)
+        self.distribuidor_tabla_personas.setColumnStretch(3,0)
+        self.distribuidor_tabla_personas.setColumnStretch(4,0)
+        self.distribuidor_tabla_personas.setColumnStretch(4,0)
+
+        # Ciclo para llenar la tabla
+        if (self.personas != None and len(self.personas) > 0):
+            self.tabla_personas.setVisible(True)
+
+            # Creación de las etiquetas
+
+            etiqueta_nombre = QLabel("Nombre")
+            etiqueta_nombre.setMinimumSize(QSize(0, 0))
+            etiqueta_nombre.setMaximumSize(QSize(65525, 65525))
+            etiqueta_nombre.setAlignment(Qt.AlignCenter)
+            etiqueta_nombre.setFont(QFont("Times", weight=QFont.Bold))
+            self.distribuidor_tabla_personas.addWidget(etiqueta_nombre, 0, 0, Qt.AlignCenter)
+
+            etiqueta_acciones = QLabel("Acciones")
+            etiqueta_acciones.setMinimumSize(QSize(0, 0))
+            etiqueta_acciones.setMaximumSize(QSize(65525, 65525))
+            etiqueta_acciones.setAlignment(Qt.AlignCenter)
+            etiqueta_acciones.setFont(QFont("Times", weight=QFont.Bold))
+            self.distribuidor_tabla_personas.addWidget(etiqueta_acciones, 0, 1, 1, 5, Qt.AlignCenter)
+
+            numero_fila = 0
+            for dic_persona in self.personas:
+                numero_fila = numero_fila + 1
+
+                etiqueta_nombre = QLabel(dic_persona['Nombre'])
+                etiqueta_nombre.setWordWrap(True)
+                self.distribuidor_tabla_personas.addWidget(etiqueta_nombre, numero_fila, 0)
+
+                # Creación de los botones asociados a cada acción
+                btn_ver_actividad = QPushButton("", self)
+                btn_ver_actividad.setToolTip("Editar persona")
+                btn_ver_actividad.setFixedSize(40, 40)
+                btn_ver_actividad.setIcon(QIcon("src/recursos/004-edit-button.png"))
+                btn_ver_actividad.clicked.connect(partial(self.mostrar_persona, numero_fila - 1))
+                self.distribuidor_tabla_personas.addWidget(btn_ver_actividad, numero_fila, 1, Qt.AlignCenter)
+
+                btn_eliminar = QPushButton("", self)
+                btn_eliminar.setToolTip("Eliminar")
+                btn_eliminar.setFixedSize(40, 40)
+                btn_eliminar.setIcon(QIcon("src/recursos/005-delete.png"))
+                btn_eliminar.clicked.connect(partial(self.eliminar_persona, numero_fila - 1))
+                self.distribuidor_tabla_personas.addWidget(btn_eliminar, numero_fila, 4, Qt.AlignCenter)
+
+        else:
+            self.tabla_carreras.setVisible(False)
+
+        # Elemento para ajustar la forma de la tabla (y evitar que queden muy espaciados)
+        self.distribuidor_tabla_personas.layout().setRowStretch(numero_fila + 2, 1)
 

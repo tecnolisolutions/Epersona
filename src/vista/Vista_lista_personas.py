@@ -60,6 +60,16 @@ class Vista_lista_personas(QWidget):
         self.distribuidor_botones.addWidget(self.btn_aniadir_actividad, 0, 0, Qt.AlignLeft)
         self.btn_aniadir_actividad.clicked.connect(self.mostrar_ventana_crear_carrera)
 
-        # Hacemos la ventana visible
+        # Creación del área con la información de las personas
+        self.tabla_personas = QScrollArea(self)
+        self.tabla_personas.setWidgetResizable(True)
+        self.tabla_personas.setFixedSize(700, 450)
+        self.widget_tabla_actividades = QWidget()
+        self.distribuidor_tabla_personas = QGridLayout()
+        self.widget_tabla_actividades.setLayout(self.distribuidor_tabla_personas);
+        self.tabla_carreras.setWidget(self.widget_tabla_actividades)
+        self.distribuidor_base.addWidget(self.tabla_personas)
+
+                # Hacemos la ventana visible
         self.show()
 

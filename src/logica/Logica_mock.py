@@ -11,3 +11,5 @@ class Logica_mock():
                        {'Nombre':'Caro', 'Apellido':'Villeda'},\
                        {'Nombre':'olivia', 'Apellido':'Soria'}]
 
+    def dar_personas(self):
+        return self.personas.copy()

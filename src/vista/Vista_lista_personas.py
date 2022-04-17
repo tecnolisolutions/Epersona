@@ -37,7 +37,14 @@ class Vista_lista_personas(QWidget):
         self.logo.setAlignment(Qt.AlignCenter)
         self.distribuidor_base.addWidget(self.logo, alignment=Qt.AlignCenter)
 
+        # Creación de las etiquetas con textos de bienvenida
+        self.etiqueta_bienvenida = QLabel("!!Bienvenido a E-Persona!!")
+        self.etiqueta_bienvenida.setAlignment(Qt.AlignCenter)
+        self.distribuidor_base.addWidget(self.etiqueta_bienvenida, Qt.AlignCenter)
 
+        self.etiqueta_descripcion = QLabel("La manera más fácil e inteligente de registrar una persona")
+        self.etiqueta_descripcion.setAlignment(Qt.AlignCenter)
+        self.distribuidor_base.addWidget(self.etiqueta_descripcion, Qt.AlignCenter)
 
         # Hacemos la ventana visible
         self.show()
